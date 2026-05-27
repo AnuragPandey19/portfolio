@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Anurag Pandey — AI/ML Engineering Portfolio</title>
+    <meta name="description" content="Anurag Pandey — B.Tech CSE (AI/ML) at UPES Dehradun. Building ML systems end-to-end: browser threat detection, plant disease diagnosis, and desktop tooling in Python, PyTorch, FastAPI, and Java." />
+    <meta name="author" content="Anurag Pandey" />
+    <meta name="theme-color" content="#0b0f17" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Anurag Pandey — AI/ML Engineering Portfolio" />
+    <meta property="og:description" content="Building ML systems end-to-end • Python, PyTorch, FastAPI • 3 deployed projects" />
+    <meta property="og:image" content="assets/og-image.png" />
+    <meta property="og:url" content="" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Anurag Pandey — AI/ML Engineering Portfolio" />
+    <meta name="twitter:description" content="Building ML systems end-to-end • Python, PyTorch, FastAPI • 3 deployed projects" />
+    <meta name="twitter:image" content="assets/og-image.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <div class="container nav">
+        <a href="#hero" class="brand">AP<span class="accent">_</span></a>
+        <nav class="menu">
+          <a href="#hero">Home</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#github">GitHub</a>
+          <a href="#contact" class="btn btn-outline btn-sm">Contact</a>
+        </nav>
+        <button id="theme-toggle" class="toggle" aria-label="Toggle theme">◐</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" class="section hero">
+        <div class="container hero-grid">
+          <div class="hero-left">
+            <div class="terminal-line">&gt; <span id="typed"></span></div>
+            <h1 class="title">Anurag Pandey</h1>
+            <p class="subtitle">Building ML systems end-to-end — Python, PyTorch, FastAPI.</p>
+            <p class="hero-bio muted">
+              B.Tech CSE (AI/ML) student at UPES Dehradun. Three deployed projects spanning
+              real-time browser security, computer vision for agriculture, and Java desktop tooling.
+            </p>
+            <div class="cta">
+              <a href="#projects" class="btn btn-primary">View Projects</a>
+              <a href="https://github.com/AnuragPandey19/resume/raw/main/Anurag_Pandey_Resume.pdf" class="btn btn-outline" target="_blank" rel="noreferrer">↓ Resume</a>
+              <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+            </div>
+            <div class="quick-meta">
+              <span>📍 Dehradun, India</span>
+              <span>🎓 B.Tech CSE (AI/ML) • 2023–2027</span>
+              <span>📊 CGPA 7.5</span>
+            </div>
+          </div>
+          <div class="hero-right">
+            <div class="code-card glow">
+              <div class="code-header">
+                <span class="dot dot-r"></span>
+                <span class="dot dot-y"></span>
+                <span class="dot dot-g"></span>
+                <span class="code-file">anurag.py</span>
+              </div>
+<pre class="code-snippet"><span class="c-key">class</span> <span class="c-cls">Engineer</span>:
+    name = <span class="c-str">"Anurag Pandey"</span>
+    role = <span class="c-str">"AI/ML Engineer"</span>
+    stack = [<span class="c-str">"Python"</span>, <span class="c-str">"PyTorch"</span>,
+             <span class="c-str">"FastAPI"</span>, <span class="c-str">"Java"</span>]
+    shipped = <span class="c-num">3</span>  <span class="c-com"># real, deployed</span>
+
+    <span class="c-key">def</span> <span class="c-fn">focus</span>(self):
+        <span class="c-key">return</span> <span class="c-str">"End-to-end ML systems"</span>
+</pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-sub muted">Three shipped, not three on a slide. Live demos and repos linked.</p>
+          </div>
+          <div id="projects-grid" class="cards-grid projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Skills</h2>
+            <p class="section-sub muted">What I actually use — no resume fluff.</p>
+          </div>
+          <div id="skills-grid" class="cards-grid skills-grid"></div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Experience</h2>
+            <p class="section-sub muted">Internships and leadership.</p>
+          </div>
+          <div id="experience-timeline" class="timeline"></div>
+        </div>
+      </section>
+
+      <!-- GitHub Section -->
+      <section id="github" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">GitHub</h2>
+            <p class="section-sub muted">Live activity, pulled directly from GitHub.</p>
+          </div>
+          <div class="github-grid">
+            <a class="gh-card" href="https://github.com/AnuragPandey19" target="_blank" rel="noreferrer">
+              <img alt="GitHub stats" loading="lazy"
+                src="https://github-readme-stats.vercel.app/api?username=AnuragPandey19&show_icons=true&hide_border=true&bg_color=00000000&title_color=00e5ff&icon_color=8a5cff&text_color=9fb0c3" />
+            </a>
+            <a class="gh-card" href="https://github.com/AnuragPandey19" target="_blank" rel="noreferrer">
+              <img alt="Top languages" loading="lazy"
+                src="https://github-readme-stats.vercel.app/api/top-langs/?username=AnuragPandey19&layout=compact&hide_border=true&bg_color=00000000&title_color=00e5ff&text_color=9fb0c3" />
+            </a>
+            <a class="gh-card gh-streak" href="https://github.com/AnuragPandey19" target="_blank" rel="noreferrer">
+              <img alt="GitHub streak" loading="lazy"
+                src="https://streak-stats.demolab.com?user=AnuragPandey19&hide_border=true&background=00000000&stroke=8a5cff&ring=00e5ff&fire=00ff9c&currStreakLabel=00e5ff&sideLabels=9fb0c3&dates=9fb0c3&currStreakNum=e6f1ff&sideNums=e6f1ff" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="section reveal">
+        <div class="container">
+          <div class="section-head">
+            <h2 class="section-title">Contact</h2>
+            <p class="section-sub muted">The fastest way to reach me.</p>
+          </div>
+          <div class="contact-grid glass">
+            <div class="contact-info">
+              <div class="contact-row">
+                <span class="contact-label">Email</span>
+                <a href="mailto:anuragpandeygct@gmail.com" class="contact-value">anuragpandeygct@gmail.com</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label">Alt Email</span>
+                <a href="mailto:Anurag.120453@stu.upes.ac.in" class="contact-value">Anurag.120453@stu.upes.ac.in</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label">Phone</span>
+                <a href="tel:+919580765051" class="contact-value">+91 9580765051</a>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label">Location</span>
+                <span class="contact-value">Dehradun, India</span>
+              </div>
+              <div class="contact-row">
+                <span class="contact-label">Education</span>
+                <span class="contact-value">UPES Dehradun — B.Tech CSE (AI/ML), 2023–2027</span>
+              </div>
+            </div>
+            <div class="contact-cta">
+              <a id="github-link" class="btn btn-outline btn-block" href="https://github.com/AnuragPandey19" target="_blank" rel="noreferrer">
+                <span class="btn-ico">⌥</span> GitHub
+              </a>
+              <a id="linkedin-link" class="btn btn-outline btn-block" href="https://www.linkedin.com/in/anurag-pandey-154259280/" target="_blank" rel="noreferrer">
+                <span class="btn-ico">in</span> LinkedIn
+              </a>
+              <a class="btn btn-primary btn-block" href="mailto:anuragpandeygct@gmail.com?subject=Hello%20Anurag">
+                ✉ Send me an email
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <span>© <span id="year"></span> Anurag Pandey</span>
+        <span class="footer-sep">•</span>
+        <span class="muted">Hand-coded with HTML, CSS, and a lot of caffeine</span>
+      </div>
+    </footer>
+
+    <!-- Vendor: Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- Main JS -->
+    <script type="module" src="assets/js/main.js"></script>
+  </body>
+</html>
