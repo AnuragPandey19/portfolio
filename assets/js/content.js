@@ -4,22 +4,27 @@ export const SKILLS = [
   {
     category: "Languages",
     icon: "</>",
-    items: ["Python", "Java", "JavaScript", "SQL", "HTML", "CSS"]
+    items: ["Python", "Java", "JavaScript", "HTML", "SQL", "CSS"]
   },
   {
     category: "ML / Deep Learning",
     icon: "{ }",
-    items: ["PyTorch", "scikit-learn", "XGBoost", "ONNX Runtime", "pandas", "NumPy"]
+    items: ["PyTorch", "scikit-learn", "XGBoost", "Pandas", "NumPy", "ONNX Runtime"]
   },
   {
     category: "Backend & Databases",
     icon: "[ ]",
-    items: ["FastAPI", "Flask", "REST APIs", "MySQL", "PostgreSQL"]
+    items: ["FastAPI", "Flask", "REST APIs", "PostgreSQL", "MongoDB"]
   },
   {
     category: "Tools & Platforms",
     icon: "( )",
-    items: ["Git / GitHub", "Docker", "Hugging Face", "Chrome Extension APIs (MV3)"]
+    items: ["Git / GitHub", "Docker", "Hugging Face", "Chrome Extension APIs (Manifest V3)"]
+  },
+  {
+    category: "Core Concepts",
+    icon: "λ",
+    items: ["Data Structures", "Algorithms", "OOP", "Version Control", "Model Deployment", "Feature Engineering"]
   }
 ];
 
