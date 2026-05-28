@@ -1,39 +1,39 @@
-import { SKILLS, PROJECTS, EXPERIENCE, SOCIAL } from './content.js';
+import { SKILLS, PROJECTS, EXPERIENCE, EDUCATION, SOCIAL } from './content.js';
 
-/* Mark body as JS-ready so reveal animations can hide content. If this line
-   never runs (e.g. file:// blocks module imports), CSS keeps content visible. */
+/* Mark body as JS-ready (graceful degradation for .reveal animations) */
 document.body.classList.add('js-ready');
 
-/* ---------- Theme ---------- */
+/* ---------- Theme (works for sidebar + topbar toggles) ---------- */
 const THEME_KEY = "ap_theme";
-const themeToggle = document.getElementById("theme-toggle");
+const themeToggles = [
+  document.getElementById('theme-toggle'),
+  document.getElementById('theme-toggle-mobile')
+].filter(Boolean);
 
-const savedTheme = localStorage.getItem(THEME_KEY);
-if (savedTheme === "light") {
-  document.body.classList.add("light");
-  themeToggle && (themeToggle.textContent = "◑");
-} else {
-  themeToggle && (themeToggle.textContent = "◐");
+function applyTheme(isLight) {
+  document.body.classList.toggle('light', isLight);
+  themeToggles.forEach(t => t && (t.textContent = isLight ? '◑' : '◐'));
+  localStorage.setItem(THEME_KEY, isLight ? 'light' : 'dark');
 }
-
-themeToggle?.addEventListener("click", () => {
-  const isLight = document.body.classList.toggle("light");
-  localStorage.setItem(THEME_KEY, isLight ? "light" : "dark");
-  themeToggle.textContent = isLight ? "◑" : "◐";
-});
+applyTheme(localStorage.getItem(THEME_KEY) === 'light');
+themeToggles.forEach(btn => btn.addEventListener('click', () => {
+  applyTheme(!document.body.classList.contains('light'));
+}));
 
 /* ---------- Year ---------- */
-document.getElementById("year").textContent = new Date().getFullYear();
+const y = new Date().getFullYear();
+document.querySelectorAll('#year, #year-2').forEach(el => el.textContent = y);
 
 /* ---------- Typed.js ---------- */
-const typedEl = document.getElementById("typed");
+const typedEl = document.getElementById('typed');
 if (typedEl && window.Typed) {
-  new window.Typed("#typed", {
+  new window.Typed('#typed', {
     strings: [
-      "Anurag Pandey | AI/ML Engineer",
-      "B.Tech CSE (AI/ML) | UPES Dehradun",
-      "Building ML systems end-to-end",
-      "Python • PyTorch • FastAPI"
+      'AI/ML Engineer',
+      'Open to SDE roles',
+      'B.Tech CSE (AI/ML) · UPES Dehradun',
+      'Python · PyTorch · Java · FastAPI',
+      'Open to internships, jobs &amp; projects'
     ],
     typeSpeed: 40,
     backSpeed: 22,
@@ -41,78 +41,18 @@ if (typedEl && window.Typed) {
     loop: true,
     smartBackspace: true,
     showCursor: true,
-    cursorChar: "_",
+    cursorChar: '_'
   });
 }
 
-/* ---------- Particles background ---------- */
-const canvas = document.getElementById("particles-canvas");
-if (canvas) {
-  const ctx = canvas.getContext("2d");
-  let w, h, particles;
-  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-  window.addEventListener("resize", resize);
-  resize();
-
-  function initParticles() {
-    const count = Math.min(110, Math.floor((w * h) / 16000));
-    particles = new Array(count).fill(0).map(() => ({
-      x: Math.random() * w,
-      y: Math.random() * h,
-      vx: (Math.random() - 0.5) * 0.35,
-      vy: (Math.random() - 0.5) * 0.35,
-      r: Math.random() * 1.4 + 0.4,
-      c: Math.random() < 0.33 ? "#00e5ff88" : (Math.random() < 0.66 ? "#8a5cff88" : "#00ff9c88")
-    }));
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, w, h);
-    for (const p of particles) {
-      p.x += p.vx; p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.c;
-      ctx.fill();
-    }
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const a = particles[i], b = particles[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const d2 = dx * dx + dy * dy;
-        if (d2 < 120 * 120) {
-          const alpha = 1 - d2 / (120 * 120);
-          ctx.strokeStyle = `rgba(158, 199, 255, ${alpha * 0.22})`;
-          ctx.lineWidth = 0.5;
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
-        }
-      }
-    }
-    if (!prefersReduced) requestAnimationFrame(tick);
-  }
-
-  initParticles();
-  if (!prefersReduced) tick(); else { /* single frame only */ ctx.clearRect(0,0,w,h); }
-}
-
 /* ---------- Render Skills ---------- */
-(function renderSkills(){
+(function renderSkills() {
   const grid = document.getElementById('skills-grid');
   if (!grid) return;
   grid.innerHTML = '';
   SKILLS.forEach(group => {
     const card = document.createElement('div');
-    card.className = 'card glass skill-card';
+    card.className = 'skill-card';
 
     const head = document.createElement('div');
     head.className = 'skill-head';
@@ -129,7 +69,7 @@ if (canvas) {
     chips.className = 'chip-row';
     group.items.forEach(item => {
       const chip = document.createElement('span');
-      chip.className = 'chip';
+      chip.className = 'chip chip-tech';
       chip.textContent = item;
       chips.appendChild(chip);
     });
@@ -139,13 +79,13 @@ if (canvas) {
 })();
 
 /* ---------- Render Projects ---------- */
-(function renderProjects(){
+(function renderProjects() {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
   grid.innerHTML = '';
   PROJECTS.forEach(p => {
     const card = document.createElement('article');
-    card.className = 'card glass project-card';
+    card.className = 'project-card';
 
     const h = document.createElement('h3');
     h.textContent = p.name;
@@ -159,7 +99,7 @@ if (canvas) {
     }
 
     const d = document.createElement('p');
-    d.className = 'muted project-desc';
+    d.className = 'project-desc';
     d.textContent = p.description;
     card.appendChild(d);
 
@@ -181,7 +121,7 @@ if (canvas) {
       a.href = p.repo;
       a.target = '_blank';
       a.rel = 'noreferrer';
-      a.innerHTML = '<span class="btn-ico">⌥</span> Code';
+      a.textContent = '⌥ Code';
       actions.appendChild(a);
     }
     if (p.demo) {
@@ -190,7 +130,7 @@ if (canvas) {
       a.href = p.demo;
       a.target = '_blank';
       a.rel = 'noreferrer';
-      a.innerHTML = '↗ Visit Site';
+      a.textContent = '↗ Visit Site';
       actions.appendChild(a);
     }
     card.appendChild(actions);
@@ -199,25 +139,20 @@ if (canvas) {
   });
 })();
 
-/* ---------- Render Experience Timeline ---------- */
-(function renderExperience(){
+/* ---------- Render Experience ---------- */
+(function renderExperience() {
   const root = document.getElementById('experience-timeline');
   if (!root) return;
   root.innerHTML = '';
   EXPERIENCE.forEach(item => {
     const node = document.createElement('div');
-    node.className = 'tl-node glass';
+    node.className = 'tl-node';
 
     const head = document.createElement('div');
     head.className = 'tl-head';
-    const role = document.createElement('h3');
-    role.className = 'tl-role';
-    role.textContent = item.role;
-    const period = document.createElement('span');
-    period.className = 'tl-period';
-    period.textContent = item.period;
-    head.appendChild(role);
-    head.appendChild(period);
+    const role = document.createElement('h3'); role.className = 'tl-role'; role.textContent = item.role;
+    const period = document.createElement('span'); period.className = 'tl-period'; period.textContent = item.period;
+    head.appendChild(role); head.appendChild(period);
     node.appendChild(head);
 
     const company = document.createElement('div');
@@ -239,16 +174,113 @@ if (canvas) {
   });
 })();
 
-/* ---------- Set social links (defensive — already in HTML, but reaffirm) ---------- */
-(function wireSocial(){
-  const gh = document.getElementById('github-link');
-  const li = document.getElementById('linkedin-link');
-  if (gh) gh.href = SOCIAL.github;
-  if (li) li.href = SOCIAL.linkedin;
+/* ---------- Render Education ---------- */
+(function renderEducation() {
+  const root = document.getElementById('education-timeline');
+  if (!root) return;
+  root.innerHTML = '';
+  EDUCATION.forEach(item => {
+    const node = document.createElement('div');
+    node.className = 'tl-node';
+
+    const head = document.createElement('div');
+    head.className = 'tl-head';
+    const role = document.createElement('h3'); role.className = 'tl-role'; role.textContent = item.degree;
+    const period = document.createElement('span'); period.className = 'tl-period'; period.textContent = item.period;
+    head.appendChild(role); head.appendChild(period);
+    node.appendChild(head);
+
+    const company = document.createElement('div');
+    company.className = 'tl-company';
+    company.textContent = item.institution;
+    node.appendChild(company);
+
+    if (item.detail) {
+      const detail = document.createElement('div');
+      detail.className = 'tl-detail';
+      detail.textContent = item.detail;
+      node.appendChild(detail);
+    }
+
+    if (item.highlights?.length) {
+      const ul = document.createElement('ul');
+      ul.className = 'tl-bullets';
+      item.highlights.forEach(h => {
+        const li = document.createElement('li');
+        li.textContent = h;
+        ul.appendChild(li);
+      });
+      node.appendChild(ul);
+    }
+    root.appendChild(node);
+  });
+})();
+
+/* ---------- Sidebar mobile drawer ---------- */
+(function sidebarDrawer() {
+  const sidebar = document.getElementById('sidebar');
+  const toggle = document.getElementById('sidebar-toggle');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  if (!sidebar || !toggle) return;
+
+  function setOpen(open) {
+    sidebar.classList.toggle('is-open', open);
+    backdrop.classList.toggle('is-open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  toggle.addEventListener('click', () => {
+    setOpen(!sidebar.classList.contains('is-open'));
+  });
+  backdrop.addEventListener('click', () => setOpen(false));
+
+  // close drawer on nav-link click (mobile only)
+  sidebar.querySelectorAll('.sb-nav a').forEach(a => {
+    a.addEventListener('click', () => {
+      if (window.matchMedia('(max-width: 980px)').matches) setOpen(false);
+    });
+  });
+
+  // ESC closes
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+
+/* ---------- Active section observer (highlight current nav link) ---------- */
+(function activeSectionObserver() {
+  const links = document.querySelectorAll('.sb-nav a[href^="#"]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+
+  const linkMap = new Map();
+  links.forEach(link => {
+    const id = link.getAttribute('href').slice(1);
+    linkMap.set(id, link);
+  });
+
+  const sections = [...linkMap.keys()]
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('is-active'));
+        const link = linkMap.get(entry.target.id);
+        if (link) link.classList.add('is-active');
+      }
+    });
+  }, {
+    rootMargin: '-40% 0px -50% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => observer.observe(s));
 })();
 
 /* ---------- Scroll reveal ---------- */
-(function reveal(){
+(function reveal() {
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window)) {
     els.forEach(el => el.classList.add('is-visible'));
@@ -265,7 +297,7 @@ if (canvas) {
   els.forEach(el => io.observe(el));
 })();
 
-/* ---------- Smooth scroll for nav links ---------- */
+/* ---------- Smooth scroll for anchor links ---------- */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     const id = a.getAttribute('href');

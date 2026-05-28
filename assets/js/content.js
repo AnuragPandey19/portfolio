@@ -85,6 +85,30 @@ export const EXPERIENCE = [
   }
 ];
 
+export const EDUCATION = [
+  {
+    degree: "B.Tech in Computer Science & Engineering (AI/ML)",
+    institution: "UPES, Dehradun",
+    period: "Aug 2023 – May 2027",
+    detail: "CGPA: 7.5 / 10 • Specialization in Artificial Intelligence & Machine Learning",
+    highlights: [
+      "Core curriculum: DSA, OOP, DBMS, OS, Computer Networks, Machine Learning.",
+      "Active in UPES ACM and ACM-W student chapters."
+    ]
+  }
+];
+
+export const FAST_FACTS = [
+  { label: "Name",       value: "Anurag Pandey" },
+  { label: "Role",       value: "AI/ML Engineer" },
+  { label: "Education",  value: "B.Tech CSE (AI/ML)" },
+  { label: "University", value: "UPES Dehradun" },
+  { label: "Location",   value: "Dehradun, India" },
+  { label: "Languages",  value: "Python, Java, JavaScript" },
+  { label: "Focus",      value: "ML Systems, Backend APIs" },
+  { label: "Status",     value: "Open to internships — 2027 batch" }
+];
+
 export const SOCIAL = {
   github: "https://github.com/AnuragPandey19",
   linkedin: "https://www.linkedin.com/in/anurag-pandey-154259280/",
