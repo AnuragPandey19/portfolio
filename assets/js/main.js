@@ -103,6 +103,17 @@ if (typedEl && window.Typed) {
     d.textContent = p.description;
     card.appendChild(d);
 
+    if (p.highlights?.length) {
+      const ul = document.createElement('ul');
+      ul.className = 'project-highlights';
+      p.highlights.forEach(h => {
+        const li = document.createElement('li');
+        li.textContent = h;
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+    }
+
     const tags = document.createElement('div');
     tags.className = 'chip-row';
     p.tags.forEach(t => {

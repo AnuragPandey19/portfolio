@@ -28,28 +28,43 @@ export const PROJECTS = [
     key: "surfvigil",
     name: "SurfVigil",
     tagline: "Real-time browser threat detection",
-    description: "Chrome extension + FastAPI backend running 4 threat-specific ML models in parallel: XSS (XGBoost, F1 0.975), phishing (ensemble, F1 0.995), anomaly detection (IF + autoencoder + RF, F1 0.991), and cryptomining (94.7% acc). Achieves ~115ms end-to-end latency with SHAP-based explainability for Allow/Warn/Block decisions.",
+    description: "Chrome extension + FastAPI backend that flags malicious web pages in real time using ML models running in parallel.",
+    highlights: [
+      "4 threat-specific models — XSS, phishing, anomalies, cryptomining",
+      "~115 ms end-to-end inference latency",
+      "SHAP-based explainability for Allow / Warn / Block decisions"
+    ],
     tags: ["Python", "FastAPI", "XGBoost", "ONNX", "PostgreSQL", "Chrome MV3"],
     repo: "https://github.com/AnuragPandey19/SurfVigil",
     demo: "https://surfvigil.com/"
   },
   {
-    key: "rice-leaf",
-    name: "Rice Leaf Disease Detector",
-    tagline: "Two-stage ensemble for crop disease diagnosis",
-    description: "Two-stage ensemble of 5 deep models: Stage 1 (EfficientNet-B3, DenseNet-121, MobileNetV3) for 7-class triage at 96.68% accuracy; Stage 2 (ViT-Base, ConvNeXt-Tiny) for bacterial disease refinement at 98.18%. Cut inference time 16% by trimming from 6 models to 5. Deployed via PyTorch + Flask on Hugging Face Spaces with sub-2s response.",
-    tags: ["PyTorch", "Flask", "ViT", "ConvNeXt", "Hugging Face", "Docker"],
-    repo: "https://github.com/AnuragPandey19/Rice-Disease-Detector",
-    demo: "https://undebuggedbit-rice-leaf-disease-detector.hf.space/"
-  },
-  {
     key: "smart-city",
     name: "Smart City Guide",
-    tagline: "4-layer Java Swing desktop application",
-    description: "4-layer Java Swing app (Presentation → Navigation → Services → Data Access) backed by a 7-table MySQL schema covering city profiles, tourism, transport, and user accounts across 20 cities. Secure auth via PBKDF2-HMAC-SHA256 (120K iterations, per-record salt). Self-bootstrapping schema; packaged as Windows installer with bundled JRE via jpackage.",
+    tagline: "Java Swing desktop application",
+    description: "Java Swing desktop app covering tourism, transport, and city info for 20 cities — shipped as a single Windows installer.",
+    highlights: [
+      "4-layer architecture backed by a 7-table MySQL schema",
+      "PBKDF2-HMAC-SHA256 authentication (120K iterations, per-record salt)",
+      "Self-bootstrapping first-run flow + bundled JRE via jpackage"
+    ],
     tags: ["Java", "Swing", "JDBC", "MySQL", "jpackage"],
     repo: "https://github.com/AnuragPandey19/Smart-City-Application-",
     demo: "https://github.com/AnuragPandey19/Smart-City-Application-/releases/tag/v1.0"
+  },
+  {
+    key: "rice-leaf",
+    name: "Rice Leaf Disease Detector",
+    tagline: "Two-stage vision ensemble for crop disease diagnosis",
+    description: "Two-stage computer vision ensemble that diagnoses rice leaf disease and refines bacterial subtypes.",
+    highlights: [
+      "Stage 1 (3 CNNs) — 7-class triage at 96.68% accuracy",
+      "Stage 2 (ViT + ConvNeXt) — bacterial subtypes at 98.18%",
+      "Deployed on Hugging Face Spaces with sub-2s response"
+    ],
+    tags: ["PyTorch", "Flask", "ViT", "ConvNeXt", "Hugging Face", "Docker"],
+    repo: "https://github.com/AnuragPandey19/Rice-Disease-Detector",
+    demo: "https://undebuggedbit-rice-leaf-disease-detector.hf.space/"
   }
 ];
 
