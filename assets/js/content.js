@@ -9,7 +9,7 @@ export const SKILLS = [
   {
     category: "ML / Deep Learning",
     icon: "{ }",
-    items: ["PyTorch", "scikit-learn", "XGBoost", "Pandas", "NumPy", "ONNX Runtime"]
+    items: ["PyTorch", "scikit-learn", "XGBoost", "Pandas", "NumPy"]
   },
   {
     category: "Backend & Databases",
