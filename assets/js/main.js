@@ -126,9 +126,12 @@ if (typedEl && window.Typed) {
 
     const actions = document.createElement('div');
     actions.className = 'project-actions';
+    // When repoLabel is set, the repo button is the real CTA (e.g. "Install")
+    // so it gets primary styling and the demo becomes outline.
+    const repoIsPrimary = !!p.repoLabel;
     if (p.repo) {
       const a = document.createElement('a');
-      a.className = 'btn btn-outline btn-sm';
+      a.className = `btn btn-${repoIsPrimary ? 'primary' : 'outline'} btn-sm`;
       a.href = p.repo;
       a.target = '_blank';
       a.rel = 'noreferrer';
@@ -137,7 +140,7 @@ if (typedEl && window.Typed) {
     }
     if (p.demo) {
       const a = document.createElement('a');
-      a.className = 'btn btn-primary btn-sm';
+      a.className = `btn btn-${repoIsPrimary ? 'outline' : 'primary'} btn-sm`;
       a.href = p.demo;
       a.target = '_blank';
       a.rel = 'noreferrer';
