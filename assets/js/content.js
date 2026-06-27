@@ -110,7 +110,7 @@ export const EDUCATION = [
     degree: "B.Tech in Computer Science & Engineering (AI/ML)",
     institution: "UPES, Dehradun",
     period: "Aug 2023 – May 2027",
-    detail: "CGPA: 7.5 / 10 • Specialization in Artificial Intelligence & Machine Learning",
+    detail: "CGPA: 7.7 / 10 • Specialization in Artificial Intelligence & Machine Learning",
     highlights: [
       "Core curriculum: DSA, OOP, DBMS, OS, Computer Networks, Machine Learning.",
       "Active in UPES ACM and ACM-W student chapters."
