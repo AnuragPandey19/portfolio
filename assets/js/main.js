@@ -132,7 +132,7 @@ if (typedEl && window.Typed) {
       a.href = p.repo;
       a.target = '_blank';
       a.rel = 'noreferrer';
-      a.textContent = '⌥ Code';
+      a.textContent = p.repoLabel || '⌥ Code';
       actions.appendChild(a);
     }
     if (p.demo) {

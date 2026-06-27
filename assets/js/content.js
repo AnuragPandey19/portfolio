@@ -40,7 +40,8 @@ export const PROJECTS = [
       "SHAP-based explainability for Allow / Warn / Block decisions"
     ],
     tags: ["Python", "FastAPI", "XGBoost", "ONNX", "PostgreSQL", "Chrome MV3"],
-    repo: "https://github.com/AnuragPandey19/SurfVigil",
+    repo: "https://chromewebstore.google.com/detail/surfvigil/glalkjnmdnblfobilebjkelocclcojcn",
+    repoLabel: "⊕ Install",
     demo: "https://surfvigil.com/"
   },
   {
