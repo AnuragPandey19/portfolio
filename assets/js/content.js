@@ -32,14 +32,15 @@ export const PROJECTS = [
   {
     key: "surfvigil",
     name: "SurfVigil",
-    tagline: "Real-time browser threat detection",
-    description: "Chrome extension + FastAPI backend that flags malicious web pages in real time using ML models running in parallel.",
+    tagline: "AI-powered browser threat detection",
+    description: "Production Chrome extension + FastAPI backend that scans every page in real time for phishing, XSS, cryptomining, and DOM anomalies. 4-model ML ensemble (RF, XGBoost, IF + Autoencoder hybrid, Logistic Regression) with Google Safe Browsing reputation pre-check.",
     highlights: [
-      "4 threat-specific models — XSS, phishing, anomalies, cryptomining",
-      "~115 ms end-to-end inference latency",
-      "SHAP-based explainability for Allow / Warn / Block decisions"
+      "Self-healing DB connection pool on Neon PostgreSQL — tolerates managed-DB auto-suspend and container restarts, closed a silent data-loss window",
+      "Debugged 3 silent model failures caused by scikit-learn version drift between training and inference — models returning 0s for days behind HTTP 200",
+      "Recalibrated ensemble thresholds on a 17-site live-traffic sample — cut FP WARN rate from ~65% to ~0% without losing real detections",
+      "Layered app security: Origin allowlist, per-IP rate limiting, payload-shape validation, (client_ip, URL) dedup on the retraining feedback endpoint"
     ],
-    tags: ["Python", "FastAPI", "XGBoost", "ONNX", "PostgreSQL", "Chrome MV3"],
+    tags: ["Python", "FastAPI", "XGBoost", "scikit-learn", "PostgreSQL", "Docker", "Chrome MV3"],
     repo: "https://chromewebstore.google.com/detail/surfvigil/glalkjnmdnblfobilebjkelocclcojcn",
     repoLabel: "⊕ Install",
     demo: "https://surfvigil.com/"
