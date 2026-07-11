@@ -184,6 +184,20 @@ if (typedEl && window.Typed) {
       });
       node.appendChild(ul);
     }
+
+    if (item.certificate) {
+      const actions = document.createElement('div');
+      actions.className = 'tl-actions';
+      const a = document.createElement('a');
+      a.className = 'btn btn-outline btn-sm';
+      a.href = item.certificate;
+      a.target = '_blank';
+      a.rel = 'noreferrer';
+      a.textContent = '↗ Certificate';
+      actions.appendChild(a);
+      node.appendChild(actions);
+    }
+
     root.appendChild(node);
   });
 })();

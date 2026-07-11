@@ -84,7 +84,8 @@ export const EXPERIENCE = [
       "Owned the end-to-end pipeline: data preprocessing, feature engineering, model training, validation.",
       "Cleaned and annotated datasets across sources — handled missing values, inconsistencies, class imbalance.",
       "Iterated on algorithm tuning in an agile workflow, contributing to measurable accuracy gains."
-    ]
+    ],
+    certificate: "https://drive.google.com/file/d/1dnLmlLQnebRUteq4pCKBmSOEl_MeDcXh/view?usp=drive_link"
   },
   {
     role: "AI/ML Intern",
@@ -93,7 +94,8 @@ export const EXPERIENCE = [
     bullets: [
       "Performed data analysis and preprocessing for an investor-startup matching system.",
       "Built a prototype ML model for matching relevance as a proof of concept for the founding team."
-    ]
+    ],
+    certificate: "https://drive.google.com/file/d/1rFrpOeuswZyu8Mjjsq0ycmk39vlEiwMs/view?usp=drive_link"
   },
   {
     role: "Core Member — ACM & ACM-W Student Chapters",
@@ -102,7 +104,8 @@ export const EXPERIENCE = [
     bullets: [
       "Program Head for ICPC Code Nexus — managed logistics and tech operations end-to-end.",
       "Awarded Certificate of Appreciation for execution and contribution."
-    ]
+    ],
+    certificate: "https://drive.google.com/file/d/1KhfMolJqis18nsfTQcvlM-a1--dRSR-7/view?usp=drive_link"
   }
 ];
 
